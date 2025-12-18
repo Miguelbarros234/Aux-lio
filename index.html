@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Auxílio FF Completo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #020617;
+  color: white;
+  text-align: center;
+}
+
+header {
+  background: #020617;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.container {
+  padding: 20px;
+}
+
+button {
+  width: 100%;
+  background: #1e293b;
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #334155;
+}
+
+.resultado {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #22c55e;
+}
+</style>
+</head>
+
+<body>
+
+<header>🎯 AUXÍLIO FF COMPLETO</header>
+
+<div class="container" id="home">
+  <p>Clique para ativar o auxílio</p>
+  <button onclick="ativar()">ATIVAR AUXÍLIO</button>
+</div>
+
+<div class="container" id="app" style="display:none;">
+  <p>Selecione uma opção:</p>
+
+  <button onclick="auxilio('capa')">🎯 AUXÍLIO DE CAPA</button>
+  <button onclick="auxilio('rush')">⚡ AUXÍLIO DE RUSH</button>
+  <button onclick="auxilio('precisao')">🧠 AUXÍLIO DE PRECISÃO</button>
+  <button onclick="auxilio('treino')">🎮 MODO TREINO</button>
+  <button onclick="auxilio('sensi')">📊 GERAR SENSIBILIDADE</button>
+  <button onclick="auxilio('recuo')">🎯 CONTROLE DE RECUO</button>
+  <button onclick="auxilio('foco')">👁️ FOCO DE MIRA</button>
+  <button onclick="auxilio('movimento')">🏃 MOVIMENTAÇÃO</button>
+  <button onclick="auxilio('clutch')">🔥 MODO CLUTCH</button>
+  <button onclick="auxilio('sniper')">🎯 MODO SNIPER</button>
+  <button onclick="auxilio('dpi')">⚙️ AJUSTE DE DPI</button>
+  <button onclick="auxilio('erro')">❌ CORRIGIR ERROS</button>
+  <button onclick="auxilio('pro')">👑 MODO PRO</button>
+  <button onclick="fechar()">❌ SAIR</button>
+
+  <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+function ativar() {
+  document.getElementById("home").style.display = "none";
+  document.getElementById("app").style.display = "block";
+
+  // tenta abrir em tela cheia
+  document.documentElement.requestFullscreen?.();
+}
+
+function auxilio(tipo) {
+  const textos = {
+    capa: "👉 Mire no peito + puxão curto para cima",
+    rush: "⚡ Atire rápido em rajadas curtas",
+    precisao: "🧠 Controle fino do dedo, sem puxar demais",
+    treino: "🎮 Treine 2 minutos antes da partida",
+    sensi: "📊 Geral: 95 | Red Dot: 88 | 2x: 78",
+    recuo: "🎯 Não segure o tiro, atire e solte",
+    foco: "👁️ Mire 1cm abaixo da cabeça",
+    movimento: "🏃 Atire andando de lado",
+    clutch: "🔥 Respire, rajada curta, capa garantido",
+    sniper: "🎯 Puxe só 1 toque ao atirar",
+    dpi: "⚙️ DPI médio (400–500) é ideal",
+    erro: "❌ Não puxe longo nem atire parado",
+    pro: "👑 Combine movimento + rajada + puxão curto"
+  };
+
+  document.getElementById("resultado").innerText = textos[tipo];
+}
+
+function fechar() {
+  // sai do fullscreen
+  if (document.fullscreenElement) document.exitFullscreen();
+
+  // volta pra tela inicial
+  document.getElementById("app").style.display = "none";
+  document.getElementById("home").style.display = "block";
+}
+</script>
+
+</body>
+  </html>
